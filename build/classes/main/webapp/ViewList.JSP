@@ -1,0 +1,64 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <%@ page import="com.student.DatabaseStudent"%>
+    <%@ page import="com.studentdatabase.StudentInfo"%>
+	<%@ page import="java.util.List" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+.center {
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  height: 50px;
+  width:350px
+}
+.container{
+display: flex;
+justify-content:left;
+align-items:center;
+height:30px;
+ width:150px;
+ font-size:20px;
+}
+
+</style>
+</head>
+<body>
+<h1 style="background-color:#80ced6;height:50px;width:400px;text-align:justify">Student Detail by Year of Study</h1>
+
+<table border="1">
+<tr style="background-color:#80ced6;color:black;size:11">
+<th rowspan="2">S.No</th>
+<th rowspan="2">Student ID</th>
+<th rowspan="2">Student Name</th>
+<th rowspan="2">Year of Study</th>
+<th rowspan="2">CGP</th>
+</tr>
+
+<% 
+List<StudentInfo> stInfo =(List<StudentInfo>)request.getAttribute("student");
+Integer i=0;
+for(StudentInfo st : stInfo)
+{
+i+=1;
+%>
+<tr style="background-color:#ccfff2;color:black;size:11">
+<td><% out.println(i);%></td>
+<td><% st.getStId();%></td>
+<td><% st.getStName();%></td>
+<td><% st.getStYear(); %></td>
+<td><% st.getStCgp(); %></td>
+</tr>
+<%} %>
+</table>
+<form action="BackController" method="get">
+<div class ="center">
+		<button type="submit" style="height:30px;width:100px;background-color:#ffe6cc;font-family:verdana;font-size:100%"><b>BACK</b></button>
+		</div>
+</form>
+</body>
+</html>
